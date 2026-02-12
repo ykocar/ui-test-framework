@@ -1,0 +1,9 @@
+/target/*
+/test-output/*
+/screenshots/*
+.project
+.classpath
+Thumbs.db
+.vscode/
+src/main/resources/config.properties
+src/main/resources/credentials.properties
