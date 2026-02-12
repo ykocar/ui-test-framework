@@ -12,7 +12,7 @@ public class TestAssignment extends BaseTest {
 
                 LoginPage loginPage = new LoginPage(BaseTest.getDriver());
                 AssignmentPage assignmentPage = new AssignmentPage(BaseTest.getDriver());
-
+                // Perform login and navigate to assignment
                 loginPage.login(
                                 BaseTest.getCredential("user_email"),
                                 BaseTest.getCredential("user_password"),

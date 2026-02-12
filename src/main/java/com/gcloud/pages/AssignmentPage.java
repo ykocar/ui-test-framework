@@ -62,7 +62,7 @@ public class AssignmentPage {
             }
         }
 
-        uiHelpers.clickShadowDomButton("Start Module", "Continue Module");
+        uiHelpers.clickShadowDomButton("Start Module");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(progressTextLabel));
         wait.until(d -> uiHelpers.getProgressPercentage(progressTextLabel) >= 0);

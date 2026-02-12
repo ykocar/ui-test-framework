@@ -15,6 +15,11 @@ public class UIHelpers {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
     }
 
+    /**
+     * Retrieves the current progress percentage from the progress bar label or
+     * shadow DOM.
+     * Returns -1 if the value cannot be found or parsed.
+     */
     public int getProgressPercentage(By progressTextLabel) {
         try {
             WebElement label = driver.findElement(progressTextLabel);
@@ -32,6 +37,10 @@ public class UIHelpers {
         }
     }
 
+    /**
+     * Scrolls all scrollable elements and the page itself to the bottom.
+     * Useful for ensuring elements are in view before interacting.
+     */
     public void scrollToBottom() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(
@@ -44,6 +53,10 @@ public class UIHelpers {
         }
     }
 
+    /**
+     * Clicks a button in the shadow DOM based on one or more text values.
+     * Tries multiple times if the element is not immediately found.
+     */
     public void clickShadowDomButton(String... texts) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         for (int i = 0; i < 10; i++) {
@@ -67,6 +80,9 @@ public class UIHelpers {
         }
     }
 
+    /**
+     * Selects and clicks a radio button answer within a shadow DOM or fallback DOM.
+     */
     public void clickAnswerInShadowDOM(String answerText) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String script = "const targetText = arguments[0];" +
@@ -88,6 +104,10 @@ public class UIHelpers {
         }
     }
 
+    /**
+     * Safely clicks an element using WebDriverWait or falls back to JavaScript
+     * click.
+     */
     public void safeClick(By locator) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
@@ -96,7 +116,9 @@ public class UIHelpers {
         }
     }
 
-    // wait for progress using JS
+    /**
+     * Waits until the progress bar reaches a target percentage using JavaScript.
+     */
     public void waitForProgress(int targetPercent, int timeoutSeconds) {
         new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds)).until(d -> {
             Object raw = ((JavascriptExecutor) driver).executeScript(
@@ -112,7 +134,10 @@ public class UIHelpers {
         });
     }
 
-    // click link by text (for Assignment)
+    /**
+     * Clicks a link based on its text content using JavaScript.
+     * Useful for dynamically loaded links in the page.
+     */
     public void clickLinkByText(String linkText) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement link = (WebElement) new WebDriverWait(driver, Duration.ofSeconds(20))
