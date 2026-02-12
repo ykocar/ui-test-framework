@@ -11,7 +11,7 @@ ChromeDriver / WebDriver compatible with your browser
 
 ### Clone the Repository
 
-git clone <your-repository-url>
+git clone https://github.com/ykocar/ui-test-framework.git
 
 ### Configure Environment Settings
 
